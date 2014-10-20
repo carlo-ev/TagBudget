@@ -1,3 +1,7 @@
+
 # TagBudget
 
-a [Sails](http://sailsjs.org) application
+=======
+
+
+Simple budget tracking web application that uses tweet style update from user
