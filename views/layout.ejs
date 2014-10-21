@@ -3,7 +3,14 @@
   <head>
     <title>New Sails App</title>
 
-    <!-- Viewport mobile tag for sensible mobile support -->
+	<!-- METRO UI CSS -->
+	<link rel="stylesheet" href="styles/metro-bootstrap.css">
+	<script src="js/metro.min.js"></script>
+	  
+	<!-- JQUERY -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+	  <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     
@@ -29,10 +36,12 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/metro-bootstrap-responsive.css">
+    <link rel="stylesheet" href="/styles/metro-bootstrap.css">
     <!--STYLES END-->
   </head>
 
-  <body>
+  <body class='metro'>
     <%- body %>
 
 
@@ -59,6 +68,7 @@
     -->
 
     <!--TEMPLATES-->
+    
     <!--TEMPLATES END-->
 
 
@@ -86,6 +96,8 @@
     -->
 
     <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/metro.min.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
