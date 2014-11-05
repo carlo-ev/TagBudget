@@ -16,8 +16,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="metro grid fluid">
-
-<%= yield %>
+	<div class="row">
+		<div class="span10 offset1">
+			<nav class="horizontal-menu">
+				<ul>
+					<li><a href="/"><h1>TagBudget</h1></a></li>
+					<li><a href="#">Tag</a></li>
+					<li><a href="#">This Week</a></li>
+					<li><a href="#">History</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<%= yield %>
 
 </body>
 </html>

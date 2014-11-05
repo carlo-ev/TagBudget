@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+	root 'transaction#index'
+
   get 'transaction/index'
 
   get 'transaction/show'

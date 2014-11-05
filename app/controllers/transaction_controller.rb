@@ -31,5 +31,5 @@ class TransactionController < ApplicationController
   private
 	def transaction_params
 		params.require(:transaction).permit(:category, :detail, :amount)
-	
+	end
 end
