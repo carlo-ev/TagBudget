@@ -5,11 +5,11 @@
 	
 	<!-- JQUERY -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<%= javascript_include_tag 'metro' %>
 	  
 	<!-- METRO UI CSS -->
-	<link rel="stylesheet" href="styles/metro-bootstrap.css">
-	<link rel="stylesheet" href="styles/metro-bootstrap-responsive.css"> 
-	<script src="js/metro.min.js"></script>
+	<%= stylesheet_link_tag 'metro-boostrap.css'%>
+	<%= stylesheet_link_tag 'metro-boostrap-responsive.css'%>
 	
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -20,10 +20,10 @@
 		<div class="span10 offset1">
 			<nav class="horizontal-menu">
 				<ul>
-					<li><a href="/"><h1>TagBudget</h1></a></li>
-					<li><a href="#">Tag</a></li>
-					<li><a href="#">This Week</a></li>
-					<li><a href="#">History</a></li>
+					<li><a href="<%= root_path %>"><h1>TagBudget</h1></a></li>
+					<li><a href="/show">Tag</a></li>
+					<li><a href="/week">This Week</a></li>
+					<li><a href="/history">History</a></li>
 				</ul>
 			</nav>
 		</div>

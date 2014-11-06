@@ -1,6 +1,7 @@
 class TransactionController < ApplicationController
 	
   def index
+	  p params[:transaction]
 	  @transactions = Transaction.all().limit(15)
   end
 
@@ -10,6 +11,7 @@ class TransactionController < ApplicationController
 
   def create
 	  Transaction.create(transaction_params)
+  	  redirect_to(:index)
   end
 
   def history
