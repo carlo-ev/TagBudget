@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 	root 'transaction#index'
 
   get 'transaction/index'
+	
+	post '/', to: 'transaction#index'
 
   get 'transaction/show'
 
-  get 'transaction/create'
+	post 'transaction/create', to: 'transaction#create'
 
   get 'transaction/history'
 
@@ -14,25 +16,9 @@ Rails.application.routes.draw do
 
   get 'transaction/edit'
 
-  get 'transaction/update'
+  put 'transaction/update'
 
   get 'transaction/delete'
-
-  get 'index/show'
-
-  get 'index/new'
-
-  get 'index/create'
-
-  get 'index/history'
-
-  get 'index/week'
-
-  get 'index/edit'
-
-  get 'index/update'
-
-  get 'index/delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

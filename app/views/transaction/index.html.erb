@@ -1,23 +1,18 @@
 <div class="row">
 	<div class="span8 offset4">
-		<form>
+		<%= form_for @transaction, url: {action: 'create'} do |f| %>
 			<legend>#New Budget!</legend>
 			<div class="input-control text">
-				<input type="text" placeholder="#Coffee - 35 ?" />
+				<%= f.text_field :category, placeholder: "#Coffee - 35 ?" %>
 			</div>
-			<input type="submit" value="Tag!"/>
-		</form>
-	</div>
-	<div class="span8  offset4">
-		<div class="tile quadro bg-cyan">
-			<div class="input-control text">
-				<input type='text' value="" placeholder="TagBudget"/>
-				<button class="btn-clear"></button>
-			</div>
-
-		</div>
+			<%= f.submit "Tag!" %>
+		<% end %>
 	</div>
 </div>
+<% @transactions.each do |transaction| %>
 <div class="row">
-
+	<div class="tile double">
+		<h3><%= transaction.category %></h3>
+	</div>
 </div>
+<% end %>
