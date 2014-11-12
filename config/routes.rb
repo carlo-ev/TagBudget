@@ -1,25 +1,16 @@
 Rails.application.routes.draw do
 
-	root 'transaction#index'
+	root 'transaction#frontpage'
 
-  get 'transaction/index'
-	
+	get 'login', to: 'session#new'
+	get 'logout', to: 'session#delete'
+	get 'signup', to: 'user#new'
+
+	resources :transaction
 	post '/', to: 'transaction#index'
-
-  get 'transaction/show'
-
-	post 'transaction/create', to: 'transaction#create'
-
-  get 'transaction/history'
-
-  get 'transaction/week'
-
-  get 'transaction/edit'
-
-  put 'transaction/update'
-
-  get 'transaction/delete'
-
+	get 'transaction/history'
+	get 'transaction/week'
+	
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

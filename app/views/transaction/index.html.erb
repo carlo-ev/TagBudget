@@ -11,8 +11,10 @@
 </div>
 <% @transactions.each do |transaction| %>
 <div class="row">
-	<div class="tile double">
-		<h3><%= transaction.category %></h3>
+	<div class="span8 offset3">
+		<div class="tile double">
+			<h3><%= transaction.category %></h3>
+		</div>
 	</div>
 </div>
 <% end %>

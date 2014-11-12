@@ -1,8 +1,15 @@
 class TransactionController < ApplicationController
 	
+  def frontpage
+  end
+	
   def index
-	  @transaction = Transaction.new
-	  @transactions = Transaction.all().limit(15)
+	  if current_user
+		  @transaction = Transaction.new
+		  @transactions = Transaction.all().limit(15)
+	  else
+		  redirect_to 'frontpage'
+	  end
   end
 
   def show
@@ -10,10 +17,14 @@ class TransactionController < ApplicationController
   end
 
   def create
-	  fullCategory = transaction_params
-	  fullCategory.split!(' ')
+	  fullCategory = transaction_params[:category].split
+	  @transaction = Transaction.new
+	  @transaction.category = fullCategory[0]
+	  @transaction.amount = fullCategory[1].to_i
+	  @transaction.detail = fullCategory[2]
+	  @transaction.save
 	  #Transaction.create(transaction_params)
-  	  #redirect_to(:index)
+  	  redirect_to(action: 'index')
   end
 
   def history
