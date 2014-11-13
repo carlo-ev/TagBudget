@@ -1,2 +1,25 @@
-<h1>Session#new</h1>
-<p>Find me in app/views/session/new.html.erb</p>
+<br>
+<br>
+<br>
+<div class="row">
+	<div class="span6 offset5">
+		<div class="panel">
+			<div class="panel-header">
+				<h2>Login</h2>
+			</div>
+			<div class="panel-content">
+				<%= form_tag('/session/create', method: 'post') do %>
+					<%= label_tag(:email, 'Email:') %>
+					<div class="input-control text">	
+						<%= text_field_tag(:email) %>
+					</div>
+					<%= label_tag(:password, 'Password:') %>
+					<div class="input-control password">	
+						<%= text_field_tag(:password) %>
+					</div>
+					<%= submit_tag 'LogIn'%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

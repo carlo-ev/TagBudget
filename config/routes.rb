@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 	get 'login', to: 'session#new'
 	get 'logout', to: 'session#delete'
 	get 'signup', to: 'user#new'
-
+	post 'users', to: 'user#create'
+	
 	resources :transaction
 	post '/', to: 'transaction#index'
 	get 'transaction/history'

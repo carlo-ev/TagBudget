@@ -1,2 +1,29 @@
-<h1>User#new</h1>
-<p>Find me in app/views/user/new.html.erb</p>
+<br>
+<br>
+<br>
+<div class="row">
+	<div class="span8 offset4">
+		<div class="panel">
+			<div class="panel-header">
+				<h2>Signup</h2>
+			</div>
+			<div class="panel-content">
+				<%= form_for @user do |u| %>
+					<%= label_tag(:email, 'Email:') %>
+					<div class="input-control text">	
+						<%= u.text_field :email %>
+					</div>
+					<%= label_tag(:password, 'Password:') %>
+					<div class="input-control password">	
+						<%= u.password_field :password %>
+					</div>
+					<%= label_tag(:password_confirmation, 'Retype Password:') %>
+					<div class="input-control password">	
+						<%= u.password_field :password_confirmation %>
+					</div>
+					<%= submit_tag 'SignUp'%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
