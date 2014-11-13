@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112230500) do
+ActiveRecord::Schema.define(version: 20141113201736) do
 
   create_table "transactions", force: true do |t|
     t.string   "category"
@@ -23,11 +23,10 @@ ActiveRecord::Schema.define(version: 20141112230500) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "balance"
+    t.string   "password_digest"
   end
 
 end

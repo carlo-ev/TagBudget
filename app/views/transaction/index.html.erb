@@ -1,4 +1,11 @@
 <div class="row">
+	<div class="span8 pull-right">
+		Current Balance:
+		<%= @current_user.balance %>
+	</div>
+	<hr>
+</div>
+<div class="row">
 	<div class="span8 offset4">
 		<%= form_for @transaction, url: {action: 'create'} do |f| %>
 			<legend>#New Budget!</legend>
@@ -9,11 +16,27 @@
 		<% end %>
 	</div>
 </div>
+<br>
 <% @transactions.each do |transaction| %>
 <div class="row">
-	<div class="span8 offset3">
-		<div class="tile double">
-			<h3><%= transaction.category %></h3>
+	<div class="span6 offset5">
+		<div class="tile live triple fg-darker ol-orange" data-role="live-tile" data-effect="slideLeft">
+			<div class="tile-content">
+				<h1>
+				<%= transaction.category %>
+				</h1>
+			</div>
+			<div class="tile-content">
+				<%= transaction.amount %>
+			</div>
+			<div class="brand bg-black">
+				<% if transaction.detail %>
+					<div class="label fg-white"><%= transaction.detail %></div>
+				<% end %>
+				<div class="badge fg-darker bg-<%= transaction.amount < 0 ? 'red' : 'green' %>">
+					<i class="<%= transaction.amount > 0 ? 'icon-add-2' : 'icon-minus-2' =%>"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

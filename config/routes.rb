@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 	root 'transaction#frontpage'
 
 	get 'login', to: 'session#new'
-	get 'logout', to: 'session#delete'
+	post 'login', to: 'session#create'
+	get 'logout', to: 'session#destroy'
 	get 'signup', to: 'user#new'
 	post 'users', to: 'user#create'
 	

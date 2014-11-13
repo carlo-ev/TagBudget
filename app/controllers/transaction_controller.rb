@@ -1,4 +1,6 @@
 class TransactionController < ApplicationController
+	before_filter :authorize
+	skip_before_filter :authorize, only: ['frontpage']
 	
   def frontpage
   end

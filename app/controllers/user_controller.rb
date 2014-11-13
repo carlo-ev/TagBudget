@@ -4,9 +4,11 @@ class UserController < ApplicationController
 	end
 	
 	def create
-		@user = User.new(user_params)
-		if	@user.save
-			redirect_to root_url, :notice => 'Signed Up!'
+		user = User.new(user_params)
+		user.balance = 0
+		if	user.save
+			session[:user_id] = user.id
+			redirect_to '/transaction', :notice => 'Signed Up!'
 		else
 			render 'new'
 		end

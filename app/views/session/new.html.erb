@@ -8,14 +8,14 @@
 				<h2>Login</h2>
 			</div>
 			<div class="panel-content">
-				<%= form_tag('/session/create', method: 'post') do %>
+				<%= form_tag('/login', method: 'post') do %>
 					<%= label_tag(:email, 'Email:') %>
 					<div class="input-control text">	
 						<%= text_field_tag(:email) %>
 					</div>
 					<%= label_tag(:password, 'Password:') %>
 					<div class="input-control password">	
-						<%= text_field_tag(:password) %>
+						<%= password_field_tag(:password) %>
 					</div>
 					<%= submit_tag 'LogIn'%>
 				<% end %>
