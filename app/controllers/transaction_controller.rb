@@ -7,8 +7,9 @@ class TransactionController < ApplicationController
 	
   def index
 	  if current_user
-		  @transaction = Transaction.new
-		  @transactions = Transaction.all().limit(15)
+		  @transaction = @current_user.transactions.new
+		  #@transactions = @current_user.transactions.limit(15)
+	  	  @transactions = Transaction.all()
 	  else
 		  redirect_to 'frontpage'
 	  end
