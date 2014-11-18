@@ -1,31 +1,32 @@
 <div class="row">
-	<div class="span12 offset2 text-right">
-		<h2>
-		Current Balance: <span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
+	<div class="span12 offset3 text-right">
+		<h4>
+			Current Balance:
+			<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
 				$ <%= @current_user.balance %>
 			</span>
-		</h2>
+		</h4>
 	</div>
 </div>
 <div class="row">
 	<div class="span8 offset4">
 		<%= form_for @transaction, url: {action: 'create'} do |f| %>
-			<legend>#New Budget!</legend>
+			<legend>New Budget!</legend>
 			<div class="input-control text">
 				<%= f.text_field :category, placeholder: "#Coffee - 35 ?" %>
 			</div>
-			<%= f.submit "Tag!" %>
+			<%= f.submit "Tag!", class: 'primary' %>
 		<% end %>
 	</div>
 </div>
 <br>
 <div class="row">
-	<div class="span6 offset6">
+	<div class="span6 offset4">
 		<div class="listview">
 			<% @transactions.each do |transaction| %>
-			<a href="#" class="list bg-light<%= transaction.amount < 0 ? 'Red' : 'Green' %> ol-orange">
+			<a href="#" class="list bg-light<%= transaction.amount < 0 ? 'Red' : 'Green' %> ol-black">
 				<div class="list-content">
-					<div class="icon icon-minus-2 fg-black bg-white"></div>
+					<div class="icon icon-minus"></div>
 					<div class="data">
 						<span class="list-title"><strong><%=transaction.category %></strong></span>
 						<span>$ <%= transaction.amount.abs %></span>
