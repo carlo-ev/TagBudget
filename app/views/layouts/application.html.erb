@@ -5,6 +5,8 @@
 	
 	<!-- JQUERY -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	
 	<!-- METRO UI -->
 	<%= stylesheet_link_tag    'application', 'metro-bootstrap-responsive.min.css' %>
@@ -21,7 +23,11 @@
 		<div class="span13 offset1">
 			<nav class="horizontal-menu">
 				<ul>
-					<li><h2 class="fg-hover-orange">Tag<tag class="fg-hover-black">Budget</tag></h2></li>
+					<li>
+						<a href="<%= root_path %>">
+							<h2 class="fg-hover-orange">Tag<tag class="fg-hover-black">Budget</tag></h2>
+						</a>
+					</li>
 					<% if @current_user %>
 						<li><a href="/show">Tag</a></li>
 						<li><a href="/week">This Week</a></li>

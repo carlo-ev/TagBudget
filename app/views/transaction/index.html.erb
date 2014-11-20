@@ -19,24 +19,29 @@
 		<% end %>
 	</div>
 </div>
-<br>
+<%= @transactions.each_slice(5).each do |row| %>
 <div class="row">
-	<div class="span6 offset4">
-		<div class="listview">
-			<% @transactions.each do |transaction| %>
-			<a href="#" class="list bg-light<%= transaction.amount < 0 ? 'Red' : 'Green' %> ol-black">
-				<div class="list-content">
-					<div class="icon icon-minus"></div>
-					<div class="data">
-						<span class="list-title"><strong><%=transaction.category %></strong></span>
-						<span>$ <%= transaction.amount.abs %></span>
-						<span class="list-remark text-right"><em>
-							<%= time_ago_in_words(transaction.created_at) %> Ago
-						</em></span>
+			<% row.each do |transaction| %>
+			<div class="span3 offset1">
+				<a href="#"  style="border-width:10px" class="tile double bg-white bd-darker ol-orange">
+					<div class="tile-content"><div class="padding10">
+						<div class="fg-black">
+							<h4>
+								<span><%= transaction.category %></span>
+								<span class="place-right"><%= transaction.amount.abs %></span>
+							</h4>
+							<p class="text-justify"><%= transaction.detail %></p>
+						</div>
 					</div>
+					<div class="brand text-right">
+						<div class="label no-margin">
+							<h4>
+								<span class="<%= transaction.amount < 0 ? 'icon-minus fg-red' : 'icon-plus fg-emerald' %>"></span>
+							</h4>
+						</div>
+					</div></div>
+				</a>
 				</div>
-			</a>
 			<% end %>
-		</div>
-	</div>
 </div>
+<% end %>

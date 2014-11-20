@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 	
 	resources :transaction
 	post '/', to: 'transaction#index'
-	get 'transaction/history'
-	get 'transaction/week'
+	get '/history', to: 'transaction#history'
+	get '/week', to: 'transaction#week'
 	
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

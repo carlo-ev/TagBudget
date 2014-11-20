@@ -21,20 +21,23 @@ class TransactionController < ApplicationController
 
   def create
 	  fullCategory = transaction_params[:category].split
-	  @transaction = Transaction.new
+	  @transaction = @current_user.transactions.new #Transaction.new
 	  @transaction.category = fullCategory[0]
 	  @transaction.amount = fullCategory[1].to_i
-	  @transaction.detail = fullCategory[2]
+	  @transaction.detail = fullCategory[2..-1].join(' ')
 	  @transaction.save
+	  @current_user.balance += @transaction.amount
+	  @current_user.save
 	  #Transaction.create(transaction_params)
   	  redirect_to(action: 'index')
   end
 
   def history
-	  @transactions = Transaction.all()
+	  @transactions = @current_user.transactions #Transaction.all()
   end
 
   def week
+	  #Date.today.at_beginning_of_week
   end
 
   def edit
