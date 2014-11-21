@@ -9,7 +9,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="span8 offset4">
+	<div class="span8 offset2">
 		<%= form_for @transaction, url: {action: 'create'} do |f| %>
 			<legend>New Budget!</legend>
 			<div class="input-control text">
@@ -19,29 +19,23 @@
 		<% end %>
 	</div>
 </div>
-<%= @transactions.each_slice(5).each do |row| %>
+<%= @transactions.each_slice(7).each do |row| %>
 <div class="row">
-			<% row.each do |transaction| %>
-			<div class="span3 offset1">
-				<a href="#"  style="border-width:10px" class="tile double bg-white bd-darker ol-orange">
-					<div class="tile-content"><div class="padding10">
-						<div class="fg-black">
-							<h4>
-								<span><%= transaction.category %></span>
-								<span class="place-right"><%= transaction.amount.abs %></span>
-							</h4>
-							<p class="text-justify"><%= transaction.detail %></p>
-						</div>
+	<div class="tile-group seven offset2">
+		<% row.each do |transaction| %>
+			<a href="<%= transaction_path(transaction) %>" class="tile fg-white ol-darker bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
+				<div class="tile-content">
+					<div class="text-right padding10">
+						<h3 class="no-margin fg-white"><%= transaction.amount.abs %></h3>
+						<p class="fg-white"><%= transaction.category %></p>
 					</div>
-					<div class="brand text-right">
-						<div class="label no-margin">
-							<h4>
-								<span class="<%= transaction.amount < 0 ? 'icon-minus fg-red' : 'icon-plus fg-emerald' %>"></span>
-							</h4>
-						</div>
-					</div></div>
-				</a>
 				</div>
-			<% end %>
+				<div class="brand">
+					<span class="name"><%= time_ago_in_words transaction.created_at %> Ago</span>
+					<span class="badge <%= transaction.amount < 0 ? 'icon-minus-2' : 'icon-plus-2' %>"></span>
+				</div>
+			</a>
+		<% end %>
+	</div>
 </div>
 <% end %>
