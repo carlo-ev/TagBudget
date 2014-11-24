@@ -1,24 +1,23 @@
 <div class="row">
-	<div class="span12 offset3 text-right">
-		<h4>
+		<div class="span6 place-right">
+		<p class="subheader" style="line-height:2rem;">
 			Current Balance:
 			<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
 				$ <%= @current_user.balance %>
 			</span>
-		</h4>
+		</p>
 	</div>
-</div>
-<div class="row">
-	<div class="span8 offset2">
+	<div class="span8 offset1">
 		<%= form_for @transaction, url: {action: 'create'} do |f| %>
-			<legend>New Budget!</legend>
-			<div class="input-control text">
-				<%= f.text_field :category, placeholder: "#Coffee - 35 ?" %>
-			</div>
-			<%= f.submit "Tag!", class: 'primary' %>
+			<div class="input-control text size6">
+				<%= f.text_field :category, placeholder: "#New Transaction!", class: 'size4' %>
+				<%= f.submit "Tag!", class: 'primary size2' %>	
+		</div>
 		<% end %>
 	</div>
+
 </div>
+<br/>
 <%= @transactions.each_slice(7).each do |row| %>
 <div class="row">
 	<div class="tile-group seven offset2">

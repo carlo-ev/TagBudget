@@ -29,12 +29,12 @@
 						</a>
 					</li>
 					<% if @current_user %>
-						<li><a href="/show">Tag</a></li>
+						<li><a href="<%= transaction_index_path %>">Tag</a></li>
 						<li><a href="/week">This Week</a></li>
 						<li><a href="/history">History</a></li>
 						<li class="place-right" style="padding:10px;">
 							<a href="/logout" class="fg-hover-orange">
-								<%= @current_user.email %>
+								<%= @current_user.email.split('@')[0] %>
 								<small class="fg-gray fg-hover-black">Logout</small>
 							</a>
 						</li>
@@ -46,7 +46,7 @@
 			</nav>
 		</div>
 	</div>
-	<hr>
+	<hr/>
 	<%= yield %>
 
 </body>

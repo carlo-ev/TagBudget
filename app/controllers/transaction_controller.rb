@@ -6,13 +6,9 @@ class TransactionController < ApplicationController
   end
 	
   def index
-	  if current_user
-		  @transaction = @current_user.transactions.new
-		  #@transactions = @current_user.transactions.limit(15)
-	  	  @transactions = Transaction.all()
-	  else
-		  redirect_to 'frontpage'
-	  end
+	  @transaction = @current_user.transactions.new
+	  #@transactions = @current_user.transactions.limit(15).order('created_ad DESC')
+	  @transactions = Transaction.all().order('created_at DESC')
   end
 
   def show
@@ -33,11 +29,12 @@ class TransactionController < ApplicationController
   end
 
   def history
-	  @transactions = @current_user.transactions #Transaction.all()
+	  @transactions = @current_user.transactions.order('created_at DESC') #Transaction.all()
   end
 
   def week
-	  #Date.today.at_beginning_of_week
+	  @days = Date.today.at_beginning_of_week...Date.today.at_beginning_of_week+7
+	  @transactions = Hash[@days.collect { |day| [day.dayname, Transaction.where(created_at: day.beginning_of_day..day.end_of_day)] }]
   end
 
   def edit

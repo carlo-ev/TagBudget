@@ -1,2 +1,28 @@
-<h1>Transaction#week</h1>
-<p>Find me in app/views/transaction/week.html.erb</p>
+<div class="grid">
+<div class="row">
+	<div class="span12 offset2">
+		<p class="subheader text-center">Week Transactions<p>
+	</div>
+</div>
+<div class="row">
+	<% @days.each_with_index do |day, index| %>
+		<div class="span2 <%= if index == 0 then 'offset1' end %>">
+			<p class="item-title"><%= day.dayname %></p>
+			<br/>
+			<% @transactions[day.dayname].each do |transaction| %>
+			<a href="<%= transaction_path transaction %>" class="tile">
+				<div class="tile-content bd-<%= transaction.amount < 0 ? 'red' : 'green' %>">
+					<div class="text-center padding10">
+						<p><%= transaction.category %></p>
+						<p><%= transaction.amount %></p>
+					</div>	
+				</div>
+				<div class="tile-status text-right">
+					<span class="name fg-black"><%= transaction.created_at.time.strftime('%I:%M %p') %></span>
+				</div>
+			</a>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+	</div>

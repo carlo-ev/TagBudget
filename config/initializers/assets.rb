@@ -10,3 +10,6 @@ Rails.application.config.assets.precompile += %w( metro-bootstrap-responsive.min
 Rails.application.config.assets.precompile += %w( metro-bootstrap.min.css )
 Rails.application.config.assets.precompile += %w( iconFont.min.css )
 Rails.application.config.assets.precompile += %w( metro.min.js )
+Rails.application.config.assets.precompile += %w( metro-ui/iconFont.eot )
+Rails.application.config.assets.precompile += %w( metro-ui/iconFont.woff )
+Rails.application.config.assets.precompile += %w( metro-ui/iconFont.ttf )

@@ -1,0 +1,18 @@
+           Prefix Verb   URI Pattern                     Controller#Action
+             root GET    /                               transaction#frontpage
+            login GET    /login(.:format)                session#new
+                  POST   /login(.:format)                session#create
+           logout GET    /logout(.:format)               session#destroy
+           signup GET    /signup(.:format)               user#new
+            users POST   /users(.:format)                user#create
+transaction_index GET    /transaction(.:format)          transaction#index
+                  POST   /transaction(.:format)          transaction#create
+  new_transaction GET    /transaction/new(.:format)      transaction#new
+ edit_transaction GET    /transaction/:id/edit(.:format) transaction#edit
+      transaction GET    /transaction/:id(.:format)      transaction#show
+                  PATCH  /transaction/:id(.:format)      transaction#update
+                  PUT    /transaction/:id(.:format)      transaction#update
+                  DELETE /transaction/:id(.:format)      transaction#destroy
+                  POST   /                               transaction#index
+          history GET    /history(.:format)              transaction#history
+             week GET    /week(.:format)                 transaction#week

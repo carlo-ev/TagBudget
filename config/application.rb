@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'date'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -21,4 +22,14 @@ module TagBudget
     # config.i18n.default_locale = :de
 	  config.assets.enabled = true
   end
+end
+
+class Date
+	def dayname
+		DAYNAMES[self.wday]
+	end
+
+  	def abbr_dayname
+    	ABBR_DAYNAMES[self.wday]
+ 	end
 end
