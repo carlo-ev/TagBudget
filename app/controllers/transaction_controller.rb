@@ -33,8 +33,11 @@ class TransactionController < ApplicationController
   end
 
   def week
-	  @days = Date.today.at_beginning_of_week...Date.today.at_beginning_of_week+7
-	  @transactions = Hash[@days.collect { |day| [day.dayname, Transaction.where(created_at: day.beginning_of_day..day.end_of_day)] }]
+	  @days = Hash[(Date.today.at_beginning_of_week...Date.today.at_beginning_of_week+7).collect { |day| [day.dayname, Array.new] }]
+	  weekTransactions = Transaction.where( created_at: Date.today.at_beginning_of_week.beginning_of_day..(Date.today.at_beginning_of_week+7).end_of_day ).order('created_at DESC')
+	  weekTransactions.each do |transaction|
+		  @days[transaction.created_at.to_date.dayname].push(transaction)
+	  end
   end
 
   def edit

@@ -5,16 +5,16 @@
 	</div>
 </div>
 <div class="row">
-	<% @days.each_with_index do |day, index| %>
+	<% @days.each_with_index do |day_transaction, index| %>
 		<div class="span2 <%= if index == 0 then 'offset1' end %>">
-			<p class="item-title"><%= day.dayname %></p>
+			<p class="item-title"><%= day_transaction[0] %></p>
 			<br/>
-			<% @transactions[day.dayname].each do |transaction| %>
+			<% day_transaction[1].each do |transaction| %>
 			<a href="<%= transaction_path transaction %>" class="tile">
 				<div class="tile-content bd-<%= transaction.amount < 0 ? 'red' : 'green' %>">
-					<div class="text-center padding10">
-						<p><%= transaction.category %></p>
-						<p><%= transaction.amount %></p>
+					<div class="padding10">
+						<p class="text-left"><%= transaction.category %></p>
+						<p class="text-right"><%= transaction.amount %></p>
 					</div>	
 				</div>
 				<div class="tile-status text-right">
