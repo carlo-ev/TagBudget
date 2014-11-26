@@ -1,40 +1,25 @@
-<div class="row">
-		<div class="span6 place-right">
-		<p class="subheader" style="line-height:2rem;">
-			Current Balance:
-			<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
-				$ <%= @current_user.balance %>
-			</span>
-		</p>
-	</div>
-	<div class="span8 offset1">
-		<%= form_for @transaction, url: {action: 'create'} do |f| %>
-			<div class="input-control text size6">
-				<%= f.text_field :category, placeholder: "#New Transaction!", class: 'size4' %>
-				<%= f.submit "Tag!", class: 'primary size2' %>	
-		</div>
-		<% end %>
-	</div>
-
-</div>
-<br/>
-<%= @transactions.each_slice(7).each do |row| %>
-<div class="row">
-	<div class="tile-group seven offset2">
-		<% row.each do |transaction| %>
-			<a href="<%= transaction_path(transaction) %>" class="tile fg-white ol-darker bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
-				<div class="tile-content">
-					<div class="text-right padding10">
-						<h3 class="no-margin fg-white"><%= transaction.amount.abs %></h3>
-						<p class="fg-white"><%= transaction.category %></p>
+<div class="grid fluid">
+	<div class="row">
+		<div class="offset1">
+			<h2 class="tile-area-title">Current Balance:
+					<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
+						$ <%= @current_user.balance %>
+					</span>
+			</h2>
+			<br/>
+			<div class="span4 place-left">
+					<%= form_for @transaction, url: {action: 'create'} do |f| %>
+					<legend>New Transaction</legend>
+					<div class="input-control text">
+						<%= f.text_field :category, placeholder: "#New Transaction!" %>
 					</div>
-				</div>
-				<div class="brand">
-					<span class="name"><%= time_ago_in_words transaction.created_at %> Ago</span>
-					<span class="badge <%= transaction.amount < 0 ? 'icon-minus-2' : 'icon-plus-2' %>"></span>
-				</div>
-			</a>
-		<% end %>
+						<%= f.submit "Tag!", class: 'primary' %>	
+					<% end %>
+					<br/><br/>
+			</div>	
+			<div class="tile-group five place-right ntp">
+				<%= render partial: "transaction" , collection: @transactions %>
+			</div>
+		</div>
 	</div>
 </div>
-<% end %>

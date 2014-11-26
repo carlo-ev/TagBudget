@@ -3,6 +3,9 @@ class TransactionController < ApplicationController
 	skip_before_filter :authorize, only: ['frontpage']
 	
   def frontpage
+	  if @current_user then
+		  redirect action: 'index'
+	  end
   end
 	
   def index
@@ -29,7 +32,15 @@ class TransactionController < ApplicationController
   end
 
   def history
-	  @transactions = @current_user.transactions.order('created_at DESC') #Transaction.all()
+	if params[:end] && params[:begin] then
+		wantedRange = (Date.parse(params[:begin]) rescue Date.today).beginning_of_day..(Date.parse(params[:end]) rescue Date.today).end_of_day
+		@transactions = @current_user.transactions.where(created_at: wantedRange).order('created_at DESC')
+	elsif params[:begin] then
+		wantedDay = (Date.parse params[:begin]) rescue Date.today
+		@transactions = @current_user.transactions.where(created_at: wantedDay.beginning_of_day..wantedDay.end_of_day ).order('created_at DESC')
+	else
+		@transactions = @current_user.transactions.order('created_at DESC')
+	end
   end
 
   def week

@@ -1,0 +1,12 @@
+<a href="<%= transaction_path(transaction) %>" class="tile fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
+	<div class="tile-content">
+		<div class="text-right padding10">
+			<h3 class="no-margin fg-white"><%= transaction.amount.abs %></h3>
+			<p class="fg-white"><%= truncate(transaction.category, length: 10) %></p>
+		</div>
+	</div>
+	<div class="brand">
+		<span class="name"><%= time_ago_in_words transaction.created_at %> Ago</span>
+		<span class="badge <%= transaction.amount < 0 ? 'icon-minus-2' : 'icon-plus-2' %>"></span>
+	</div>
+</a>

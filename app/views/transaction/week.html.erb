@@ -1,28 +1,45 @@
 <div class="grid">
-<div class="row">
-	<div class="span12 offset2">
-		<p class="subheader text-center">Week Transactions<p>
-	</div>
-</div>
-<div class="row">
-	<% @days.each_with_index do |day_transaction, index| %>
-		<div class="span2 <%= if index == 0 then 'offset1' end %>">
-			<p class="item-title"><%= day_transaction[0] %></p>
-			<br/>
-			<% day_transaction[1].each do |transaction| %>
-			<a href="<%= transaction_path transaction %>" class="tile">
-				<div class="tile-content bd-<%= transaction.amount < 0 ? 'red' : 'green' %>">
-					<div class="padding10">
-						<p class="text-left"><%= transaction.category %></p>
-						<p class="text-right"><%= transaction.amount %></p>
-					</div>	
-				</div>
-				<div class="tile-status text-right">
-					<span class="name fg-black"><%= transaction.created_at.time.strftime('%I:%M %p') %></span>
-				</div>
-			</a>
-			<% end %>
+	<div class="row">
+		<div class="span12 offset2">
+			<p class="subheader text-center">Week Transactions<p>
 		</div>
-	<% end %>
-</div>
 	</div>
+	<div class="row">
+		<% @days.each_with_index do |day_transaction, index| %>
+			<div class="span2 <%= if index == 0 then 'offset1' end %>">
+				<p class="item-title"><%= day_transaction[0] %></p>
+				<br/>
+				<% if day_transaction[1].size > 0 then %>
+					<% day_transaction[1].slice(0..2).each do |transaction| %>
+					<a href="<%= transaction_path transaction %>" class="tile ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
+						<div class="tile-content">
+							<div class="padding10">
+								<p class="text-right fg-white"><%= truncate(transaction.category, length: 10) %></p>
+								<p class="text-right fg-white">$ <%= transaction.amount.abs %></p>
+							</div>	
+						</div>
+						<div class="tile-status text-left">
+							<span class="name fg-white"><em><%= transaction.created_at.time.strftime('%I:%M %p') %></em></span>
+						</div>
+					</a>
+					<% end %>
+					<% if day_transaction[1].size > 3 then%>
+						<a href="/history?begin=<%= day_transaction[1][0].created_at.to_date%>" class="item-title-secondary">
+							<p class="text-right fg-hover-orange"><em>View All...</em></p>
+						</a>
+					<% end %>
+				<% else %>
+					<div class="tile ol-black bg-gray">
+						<div class="tile-content">
+							<div class="padding20">
+								<p class="text-center fg-white">
+									Sorry No Transactions For This Day
+								</p>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>
