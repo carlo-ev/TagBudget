@@ -3,8 +3,8 @@ class TransactionController < ApplicationController
 	skip_before_filter :authorize, only: ['frontpage']
 	
   def frontpage
-	  if @current_user then
-		  redirect action: 'index'
+	  if current_user then
+		  redirect_to action: 'index'
 	  end
   end
 	

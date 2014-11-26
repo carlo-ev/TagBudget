@@ -4,22 +4,23 @@
 			<div class="tile triple double-vertical">
 				<div class="tile-content">
 					<div class="padding15">
-						<p class="header padding15"><%= @transaction.category %></p>
+						<p class="subheader padding15"><%= @transaction.category %></p>
 						<p><%= @transaction.detail %></p>
 					</div>
 				</div>
 			</div>
-			<div class="tile double">
+			<div class="tile doublebg-dark<%= @transaction.amount < 0 ? 'Red' : 'Green' %>">
 				<div class="tile-content">
-						<p class="subheader text-center margin20 nrm nlm padding20 nrp nlp">
-							$12<%= @transaction.amount.abs %>
+						<p class="subheader text-center margin20 nrm nlm padding20 nrp nlp fg-white">
+							$<%= @transaction.amount.abs %>
 						</p>
 				</div>
 			</div>
 			<div class="tile double">
 				<div class="tile-content">
 					<p class="text-left">Transaction Made On</p>
-					<p class="text-center"><%= @transaction.created_at %></p>
+					<p class="text-center"><%= @transaction.created_at.strftime('%A, %B %M, %Y') %></p>
+					<p class="text-right"><%= @transaction.created_at.strftime('@ %l:%M%P') %></p>
 				</div>
 			</div>
 	</div>
