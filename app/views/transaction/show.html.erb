@@ -1,27 +1,39 @@
 <br/>
 <div class="grid">
-	<div class="tile-group five offset4">
-			<div class="tile triple double-vertical">
+	<div class="tile-group six offset4">
+			<div class="tile triple double-vertical bg-darkCyan ol-cyan">
 				<div class="tile-content">
 					<div class="padding15">
-						<p class="subheader padding15"><%= @transaction.category %></p>
-						<p><%= @transaction.detail %></p>
+						<p class="subheader padding15 fg-white"><%= @transaction.category %></p>
+						<hr/>
+						<p class="fg-white"><%= @transaction.detail %></p>
 					</div>
 				</div>
 			</div>
-			<div class="tile doublebg-dark<%= @transaction.amount < 0 ? 'Red' : 'Green' %>">
+			<div class="tile double bg-dark<%= @transaction.amount < 0 ? 'Red' : 'Green' %>">
 				<div class="tile-content">
 						<p class="subheader text-center margin20 nrm nlm padding20 nrp nlp fg-white">
+							<i class="icon-<%= @transaction.amount > 0 ? 'plus' : 'minus' %>"></i>
 							$<%= @transaction.amount.abs %>
 						</p>
 				</div>
 			</div>
-			<div class="tile double">
-				<div class="tile-content">
-					<p class="text-left">Transaction Made On</p>
-					<p class="text-center"><%= @transaction.created_at.strftime('%A, %B %M, %Y') %></p>
-					<p class="text-right"><%= @transaction.created_at.strftime('@ %l:%M%P') %></p>
+			
+			<div class="tile half bg-red ol-darkRed">
+				<div class="tile-content icon">
+					<i class="icon-remove fg-white"></i>
 				</div>
 			</div>
+		
+			<div class="tile double bg-darkCyan ol-cyan">
+				<div class="tile-content">
+					<div class="padding10">
+						<p class="text-left fg-white">Transaction Made On</p>
+						<p class="text-center fg-white"><%= @transaction.created_at.strftime('%A, %B %M, %Y') %></p>
+						<p class="text-right fg-white"><%= @transaction.created_at.strftime('@ %l:%M%P') %></p>
+					</div>	
+				</div>
+			</div>
+		
 	</div>
 </div>
