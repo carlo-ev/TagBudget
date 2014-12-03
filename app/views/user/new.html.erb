@@ -21,7 +21,7 @@
 					</div>
 					<%= label_tag(:balance, 'Initial Balance') %>
 					<div class="input-control text">
-						<%= u.balance :balance %>
+						<%= u.number_field :balance %>
 					</div>
 					<%= submit_tag 'SignUp', class: 'warning'%>	
 				<% end %>
