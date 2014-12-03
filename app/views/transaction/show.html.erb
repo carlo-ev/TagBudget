@@ -1,6 +1,6 @@
 <br/>
-<div class="grid">
-	<div class="tile-group six offset4">
+<div class="tile-area ntp">
+	<div class="tile-group six offset2">
 			<div class="tile triple double-vertical bg-darkCyan ol-cyan">
 				<div class="tile-content">
 					<div class="padding15">
@@ -10,7 +10,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="tile double bg-dark<%= @transaction.amount < 0 ? 'Red' : 'Green' %>">
+			<div class="tile double bg-dark<%= @transaction.amount < 0 ? 'Red ol-red' : 'Green ol-green' %>">
 				<div class="tile-content">
 						<p class="subheader text-center margin20 nrm nlm padding20 nrp nlp fg-white">
 							<i class="icon-<%= @transaction.amount > 0 ? 'plus' : 'minus' %>"></i>
@@ -18,12 +18,12 @@
 						</p>
 				</div>
 			</div>
-			
-			<div class="tile half bg-red ol-darkRed">
+		
+			<% link_to transaction_path(@transaction), :confirm => 'Do you Really want to Delete this Transaction?', method: :delete, class: 'tile half bg-red ol-darkRed' do %>
 				<div class="tile-content icon">
 					<i class="icon-remove fg-white"></i>
 				</div>
-			</div>
+			<% end %>
 		
 			<div class="tile double bg-darkCyan ol-cyan">
 				<div class="tile-content">

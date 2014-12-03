@@ -28,7 +28,7 @@ class TransactionController < ApplicationController
 	  @current_user.balance += @transaction.amount
 	  @current_user.save
 	  #Transaction.create(transaction_params)
-  	  redirect_to(action: 'index')
+  	  redirect_to action: 'index'
   end
 
   def history
@@ -51,13 +51,12 @@ class TransactionController < ApplicationController
 	  end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def delete
+  def destroy
+	  if Transaction.find(params[:id]).try(:delete) then
+		  redirect_to action: :index
+	  else
+		  redirect_to action: :show
+	  end
   end
 	
   private

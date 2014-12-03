@@ -1,10 +1,8 @@
-<div class="grid">
+<div class="grid fluid">
 	<div class="row">
-		<div class="span12 offset2">
-			<p class="subheader text-center">History<p>
-		</div>
-	</div>
-	<div class="row">
+		<h2 class="tile-area-title text-center">
+			History
+		</h2>
 		<div class="tile-group eight offset1">
 			<%  @transactions.each do |transaction| %>
 				<a href="<%= transaction_path(transaction) %>" class="tile fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">

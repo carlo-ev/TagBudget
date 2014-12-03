@@ -7,8 +7,7 @@ Rails.application.routes.draw do
 	get 'logout', to: 'session#destroy'
 	get 'signup', to: 'user#new'
 	post 'users', to: 'user#create'
-	
-	resources :transaction
+	resources :transaction , except: [ :edit, :update ]
 	post '/', to: 'transaction#index'
 	get '/history', to: 'transaction#history'
 	get '/week', to: 'transaction#week'

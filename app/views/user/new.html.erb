@@ -19,7 +19,11 @@
 					<div class="input-control password">	
 						<%= u.password_field :password_confirmation %>
 					</div>
-					<%= submit_tag 'SignUp', class: 'warning'%>
+					<%= label_tag(:balance, 'Initial Balance') %>
+					<div class="input-control text">
+						<%= u.balance :balance %>
+					</div>
+					<%= submit_tag 'SignUp', class: 'warning'%>	
 				<% end %>
 			</div>
 		</div>
