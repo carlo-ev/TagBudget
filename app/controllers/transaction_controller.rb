@@ -10,8 +10,8 @@ class TransactionController < ApplicationController
 	
   def index
 	  @transaction = @current_user.transactions.new
-	  #@transactions = @current_user.transactions.limit(15).order('created_ad DESC')
-	  @transactions = Transaction.all().order('created_at DESC')
+	  @transactions = @current_user.transactions.limit(15).order('created_ad DESC')
+	  #@transactions = Transaction.all().order('created_at DESC')
   end
 
   def show
