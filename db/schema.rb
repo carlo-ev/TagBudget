@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141115042222) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "balance",         limit: 255
+    t.integer  "balance"
     t.string   "password_digest"
   end
 
