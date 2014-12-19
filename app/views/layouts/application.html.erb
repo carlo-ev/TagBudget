@@ -10,12 +10,11 @@
 	<!-- JQUERY -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	
 	<!-- METRO UI -->
-	<%= stylesheet_link_tag    'application', 'metro-bootstrap-responsive.min.css' %>
-	<%= stylesheet_link_tag    'application', 'metro-bootstrap.min.css' %>
-	<%= stylesheet_link_tag    'application', 'iconFont.min.css' %>
+	<%= stylesheet_link_tag    'application', 'metro-bootstrap-responsive.min.css', 'data-tubolinks-track' => true %>
+	<%= stylesheet_link_tag    'application', 'metro-bootstrap.min.css', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag    'application', 'iconFont.min.css', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'metro.min.js' %>
 	
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
