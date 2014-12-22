@@ -6,10 +6,8 @@
 	<!-- FAVICON -->
 	<%= favicon_link_tag 'favicon.ico'%>
 
-	
 	<!-- JQUERY -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 	
 	<!-- METRO UI -->
 	<%= stylesheet_link_tag    'application', 'metro-bootstrap-responsive.min.css', 'data-tubolinks-track' => true %>
@@ -28,14 +26,14 @@
 				<nav class="horizontal-menu">
 					<ul>
 						<li>
-							<a href="<%= root_path %>">
+							<a href="<%= root_url %>">
 								<h2 class="fg-hover-orange">Tag<tag class="fg-hover-black">Budget</tag></h2>
 							</a>
 						</li>
 						<% if @current_user %>
-							<li><a href="<%= transaction_index_path %>" class="fg-hover-orange">Tag</a></li>
-							<li><a href="/week" class="fg-hover-orange">This Week</a></li>
-							<li><a href="/history" class="fg-hover-orange">History</a></li>
+							<li><a href="<%= transaction_index_url %>" class="fg-hover-orange">Tag</a></li>
+							<li><a href="<%= root_url %>week" class="fg-hover-orange">This Week</a></li>
+							<li><a href="<%= root_url %>history" class="fg-hover-orange">History</a></li>
 							<li>
 								<div class="tile-area no-padding">
 								<div class="user-id bg-transparent">
@@ -44,7 +42,7 @@
 									</div>
 									<div class="user-id-name fg-black">
 										<span class="first-name"><%= @current_user.email.split('@')[0] %></span>
-											<a href="/logout" class="fg-black fg-hover-orange no-padding">
+											<a href="<%= root_url %>logout" class="fg-black fg-hover-orange no-padding">
 												<span class="last-name">Logout</span>
 											</a>
 									</div>
@@ -52,8 +50,8 @@
 									</div>
 							</li>
 						<% else %>
-							<li class="place-right" style="padding:10px;"><a href='/signup' class="fg-hover-orange">SignUp</a></li>
-							<li class="place-right" style="padding:10px;"><a href='/login' class="fg-hover-orange">Login</a></li>
+							<li class="place-right" style="padding:10px;"><a href='<%= root_url %>signup' class="fg-hover-orange">SignUp</a></li>
+							<li class="place-right" style="padding:10px;"><a href='<%= root_url %>login' class="fg-hover-orange">Login</a></li>
 						<% end %>
 					</ul>
 				</nav>
