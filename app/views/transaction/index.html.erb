@@ -1,23 +1,21 @@
 <div class="grid fluid">
 	<div class="row">
 		<div class="offset1">
-			<h2 class="tile-area-title">Current Balance:
-					<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
-						$ <%= @current_user.balance %>
-					</span>
-			</h2>
-			<br/>
-			<div class="span4 place-left">
+			<div class="span8 offset2">
 					<%= form_for @transaction, url: {action: 'create'} do |f| %>
-					<legend>New Transaction</legend>
+					<label class="inline-block">New Transaction</label>
 					<div class="input-control text">
-						<%= f.text_field :category, placeholder: "#New Transaction!" %>
+						<%= f.text_field :category, placeholder: "#New Transaction! - Ex: #Coffee -35 Bought coffee!" %>
 					</div>
 						<%= f.submit "Tag!", class: 'primary' %>	
 					<% end %>
-					<br/><br/>
-			</div>	
+			</div>
 			<div class="tile-group five place-right ntp">
+				<h2 class="tile-area-title">Current Balance:
+					<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
+						$ <%= @current_user.balance %>
+					</span>
+				</h2>
 				<%= render partial: "transaction" , collection: @transactions %>
 			</div>
 		</div>

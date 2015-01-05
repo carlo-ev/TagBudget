@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+@font-face {
+	font-family: 'iconFont';
+	src:url('iconFont.woff') format('woff'),
+		url('iconFont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+font-family: 'iconFont';
