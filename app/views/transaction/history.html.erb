@@ -4,20 +4,30 @@
 			History
 		</h2>
 		<div class="tile-group eight offset1">
-			<%  @transactions.each do |transaction| %>
-				<a href="<%= transaction_path(transaction) %>" class="tile fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
-					<div class="tile-content">
-						<div class="text-right padding10">
-							<h3 class="no-margin fg-white"><%= transaction.amount.abs %></h3>
-							<p class="fg-white"><%= truncate(transaction.category, length: 10) %></p>
+			<%if @transactions then %>
+				<%  @transactions.each do |transaction| %>
+					<a href="<%= transaction_path(transaction) %>" class="tile fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
+						<div class="tile-content">
+							<div class="text-right padding10">
+								<h3 class="no-margin fg-white"><%= transaction.amount.abs %></h3>
+								<p class="fg-white"><%= truncate(transaction.category, length: 10) %></p>
+							</div>
 						</div>
-					</div>
-					<div class="brand">
-						<span class="name"><%= time_ago_in_words transaction.created_at %> Ago</span>
-						<span class="badge <%= transaction.amount < 0 ? 'icon-minus-2' : 'icon-plus-2' %>"></span>
-					</div>
-				</a>
+						<div class="brand">
+							<span class="name"><%= time_ago_in_words transaction.created_at %> Ago</span>
+							<span class="badge <%= transaction.amount < 0 ? 'icon-minus-2' : 'icon-plus-2' %>"></span>
+						</div>
+					</a>
+				<% end %>
 			<% end %>
+		</div>
+		<div class="pagination">
+			<ul>
+				<li class="first"><a><i class="icon-first-2"></i></a></li>
+				<li class="prev"><a><i class="icon-previous"></i></a></li>
+				<li class="next"><a><i class="icon-next"></i></a></li>
+				<li class="last"><a><i class="icon-last-2"></i></a></li>
+			</ul>
 		</div>
 	</div>
 </div>

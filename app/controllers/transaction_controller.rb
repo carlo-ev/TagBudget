@@ -30,26 +30,13 @@ class TransactionController < ApplicationController
   end
 
   def history
-		if params[:end] || params[:begin] then
-			if params[:end] && params[:begin] then
-				range = (Date.parse(params[:begin]) rescue Date.today).beginning_of_day..(Date.parse(params[:end]) rescue Date.today).end_of_day
-			elsif params[:begin] then
-				range = ((Date.parse params[:begin]) rescue Date.today).beginning_of_day..Date.today.end_of_day
-			elsif params[:end] then
-				range = (Date.new.beginning_of_day..((Date.parse params[:end]) rescue Date.today).end_of_day)
-			end
-			@transactions = @current_user.transactions.where(created_at: range).order('created_at DESC')
-		else
-			@transactions = @current_user.transactions.order('created_at DESC')
-		end
+		history = @current_user.get_history(params[:begin], params[:end]).each_slice(16).to_a
+		@maxPage = history.size
+		@transactions = history[params[:page]? params[:page]-1 : 0]
   end
 
   def week
-	  @days = Hash[(Date.today.at_beginning_of_week...Date.today.at_beginning_of_week+7).collect { |day| [day.dayname, Array.new] }]
-	  weekTransactions = @current_user.transactions.where( created_at: Date.today.at_beginning_of_week.beginning_of_day..(Date.today.at_beginning_of_week+7).end_of_day ).order('created_at DESC')
-	  weekTransactions.each do |transaction|
-		  @days[transaction.created_at.to_date.dayname].push(transaction)
-	  end
+		@days = @current_user.get_week
   end
 
   def destroy

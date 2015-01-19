@@ -7,10 +7,8 @@
 default: &default
   adapter: mysql2
   pool: 5
-  timeout: 5000
-  host: localhost
   socket: /tmp/mysql.sock
-  user: tagbudget
+  username: root
   password: 
 
 development:

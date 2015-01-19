@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		
-			<% link_to transaction_path(@transaction), :confirm => 'Do you Really want to Delete this Transaction?', method: :delete, class: 'tile half bg-red ol-darkRed' do %>
+			<%= link_to transaction_path(@transaction), :confirm => 'Do you Really want to Delete this Transaction?', method: :delete, class: 'tile half bg-red ol-darkRed' do %>
 				<div class="tile-content icon">
 					<i class="icon-remove fg-white"></i>
 				</div>
