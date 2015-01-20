@@ -18,21 +18,20 @@ class TransactionController < ApplicationController
   end
 
   def create
-	  fullCategory = transaction_params[:category].split
-	  @transaction = @current_user.transactions.new
-	  @transaction.category = fullCategory[0]
-	  @transaction.amount = fullCategory[1].to_i
-	  @transaction.detail = fullCategory[2..-1].join(' ')
+		@transaction = Transaction.build_transaction transaction_params[:detail]
+		@current_user.transactions << @transaction
 	  @transaction.save
 	  @current_user.balance += @transaction.amount
 	  @current_user.save
-  	  redirect_to action: 'index'
+  	redirect_to action: 'index'
   end
 
   def history
 		history = @current_user.get_history(params[:begin], params[:end]).each_slice(16).to_a
+		@actualPage = params[:page]? params[:page].to_i-1 : 0;
 		@maxPage = history.size
-		@transactions = history[params[:page]? params[:page]-1 : 0]
+		@dates = 'begin='+params[:begin].to_s+'&end='+params[:end].to_s
+		@transactions = history[@actualPage]
   end
 
   def week

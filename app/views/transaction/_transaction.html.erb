@@ -1,8 +1,10 @@
-<a href="<%= transaction_path(transaction) %>" class="tile fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
+<a href="<%= transaction_path(transaction) %>" class="tile <%= 'double-vertical' unless transaction.tags.size < 2%> fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
 	<div class="tile-content">
 		<div class="text-right padding10">
 			<h3 class="no-margin fg-white"><%= transaction.amount.abs %></h3>
-			<p class="fg-white"><%= truncate(transaction.category, length: 10) %></p>
+			<% transaction.tags.each do |tag| %>
+				<p class="fg-white">#<%= truncate(tag.name, length: 9) %></p>
+			<% end %>
 		</div>
 	</div>
 	<div class="brand">

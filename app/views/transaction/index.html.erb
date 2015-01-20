@@ -1,13 +1,13 @@
 <div class="grid fluid">
 	<div class="row">
 		<div class="offset1">
-			<div class="span8 offset2">
+			<div class="span9 offset1">
 					<%= form_for @transaction, url: {action: 'create'} do |f| %>
-					<label class="inline-block">New Transaction</label>
-					<div class="input-control text">
-						<%= f.text_field :category, placeholder: "#New Transaction! - Ex: #Coffee -35 Bought coffee!" %>
-					</div>
-						<%= f.submit "Tag!", class: 'primary' %>	
+						<label class="inline-block">New Transaction</label>
+						<div class="input-control text size6">
+							<%= f.text_field :detail, placeholder: "#New Transaction! - Ex: #Coffee -35 Bought coffee!" %>
+						</div>
+						<%= f.submit "Tag!", class: 'primary size1' %>	
 					<% end %>
 			</div>
 			<div class="tile-group five place-right ntp">

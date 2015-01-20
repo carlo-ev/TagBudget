@@ -4,7 +4,9 @@
 			<div class="tile triple double-vertical bg-darkCyan ol-cyan">
 				<div class="tile-content">
 					<div class="padding15">
-						<p class="subheader padding15 fg-white"><%= @transaction.category %></p>
+						<% @transaction.tags.each do |tag| %>
+							<p class="subheader padding15 fg-white"><%= tag.name %></p>
+						<% end %>
 						<hr/>
 						<p class="fg-white"><%= @transaction.detail %></p>
 					</div>

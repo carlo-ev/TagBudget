@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115042222) do
+ActiveRecord::Schema.define(version: 20150120174259) do
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags_transactions", force: true do |t|
+    t.integer "transaction_id"
+    t.integer "tag_id"
+  end
+
+  add_index "tags_transactions", ["tag_id"], name: "index_tags_transactions_on_tag_id", using: :btree
+  add_index "tags_transactions", ["transaction_id"], name: "index_tags_transactions_on_transaction_id", using: :btree
 
   create_table "transactions", force: true do |t|
-    t.string   "category"
     t.string   "detail"
     t.integer  "amount"
     t.datetime "created_at"
