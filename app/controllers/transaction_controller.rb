@@ -11,18 +11,21 @@ class TransactionController < ApplicationController
   def index
 	  @transaction = @current_user.transactions.new
 	  @transactions = @current_user.transactions.limit(15).order('created_at DESC')
-  end
+  	@sample = @transactions.to_a.sample
+	end
 
   def show
 	  @transaction = Transaction.find(params[:id])
   end
 
   def create
-		@transaction = Transaction.build_transaction transaction_params[:detail]
-		@current_user.transactions << @transaction
-	  @transaction.save
-	  @current_user.balance += @transaction.amount
-	  @current_user.save
+		if not transaction_params[:detail].empty? then
+			@transaction = Transaction.build_transaction transaction_params[:detail]
+			@current_user.transactions << @transaction
+	  	@transaction.save
+	  	@current_user.balance += @transaction.amount
+	  	@current_user.save
+		end
   	redirect_to action: 'index'
   end
 
@@ -32,6 +35,7 @@ class TransactionController < ApplicationController
 		@maxPage = history.size
 		@dates = 'begin='+params[:begin].to_s+'&end='+params[:end].to_s
 		@transactions = history[@actualPage]
+		@sample = @transactions.to_a.sample
   end
 
   def week

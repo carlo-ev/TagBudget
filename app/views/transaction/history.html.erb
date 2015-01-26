@@ -3,7 +3,10 @@
 		<h2 class="tile-area-title text-center">
 			History
 		</h2>
-		<div class="tile-group eight offset1">
+	</div>
+	<div class="row">
+		<%= render 'shared/sidebar' %>
+		<div class="tile-group six offset1">
 			<%if @transactions then %>
 				<%= render partial: "transaction" , collection: @transactions %>	
 				<div class="pagination">

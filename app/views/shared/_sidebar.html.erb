@@ -1,0 +1,13 @@
+<div class="span1">
+	<nav class="sidebar light">
+		<ul>
+			<% [{text: 'Recent', classes:'active', icon:'icon-home', url:root_url},
+			{text: 'This Week', classes:'', icon:'icon-history', url:root_url+'week'},
+			{text: 'History', classes:'', icon:'icon-calendar', url:root_url+'history'}].each do |option| %>
+				<li class="<%= option[:classes] %> subheader text-center"><a href="<%= option[:url] %>">
+					<i class="<%= option[:icon] %>"></i></a>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
+</div>

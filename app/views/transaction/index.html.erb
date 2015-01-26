@@ -1,23 +1,27 @@
 <div class="grid fluid">
 	<div class="row">
-		<div class="offset1">
-			<div class="span9 offset1">
-					<%= form_for @transaction, url: {action: 'create'} do |f| %>
-						<label class="inline-block">New Transaction</label>
-						<div class="input-control text size6">
-							<%= f.text_field :detail, placeholder: "#New Transaction! - Ex: #Coffee -35 Bought coffee!" %>
-						</div>
-						<%= f.submit "Tag!", class: 'primary size1' %>	
-					<% end %>
+		<div class="span9 offset2">
+			<%= form_for @transaction, url: {action: 'create'} do |f| %>
+			<label class="inline-block subheader-secondary">New Transaction</label>
+			<div class="input-control text size6 margin10">
+				<%= f.text_field :detail, placeholder: "#New Transaction! - Ex: #Coffee -35 Bought coffee!" %>
 			</div>
-			<div class="tile-group five place-right ntp">
-				<h2 class="tile-area-title">Current Balance:
-					<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">
-						$ <%= @current_user.balance %>
+			<%= f.submit "Tag!", class: 'primary size1 overPadding8' %>	
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+			<%= render 'shared/sidebar' %>
+			<div class="tile-group six place-right ntp offset1">
+				<h2 class="tile-area-title padding9">
+					<span class="budget text-left">
+						Main
+					</span>
+					<span class="balance place-right">Current Balance:
+						<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">$ <%= @current_user.balance %></span>
 					</span>
 				</h2>
 				<%= render partial: "transaction" , collection: @transactions %>
 			</div>
-		</div>
 	</div>
 </div>

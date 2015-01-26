@@ -1,32 +1,39 @@
-<div class="grid">
+<div class="grid-fluid">
 	<div class="row">
-		<div class="span12 offset2">
-			<p class="subheader text-center">Week Transactions<p>
+		<div class="span10 offset2">
+			<br>
+			<a href="<%= root_url %>"><i class="icon-arrow-left-3 fg-darker place-left subheader"></i></a>
+			<p class="subheader text-center">	
+				Week Transactions
+			</p>
 		</div>
 	</div>
-		<% @days.each_with_index do |day_transaction, index| %>
+	<div class="offset1">
+	<% @days.each_slice(2) do |dayrows| %>
 		<div class="row">
-			<div class="tile-group eight ntp text-center offset1">
-				<h3 class="tile-area-title"><%= day_transaction[0] %></h3>
-				<% if day_transaction[1].size > 0 then %>
-					<%= render partial: "transaction" , collection: day_transaction[1].slice(0..2) %>	
-					<% if day_transaction[1].size > 3 then%>
-						<a href="/history?begin=<%= day_transaction[1][0].created_at.to_date%>" class="item-title-secondary">
-							<p class="text-right fg-hover-orange"><em>View All...</em></p>
-						</a>
-					<% end %>
-				<% else %>
-					<div class="tile ol-steel bg-gray">
-						<div class="tile-content">
-							<div class="padding20">
-								<p class="text-center fg-white">
-									Sorry No Transactions For This Day
-								</p>
+			<% dayrows.each do |day_transaction| %>
+				<div class="tile-group four ntp text-center">
+					<h3 class="tile-area-title text-left subheader"><%= day_transaction[0] %></h3>
+					<% if day_transaction[1].size > 0 then %>
+						<%= render partial: "transaction" , collection: day_transaction[1].slice(0..2) %>	
+						<% if day_transaction[1].size > 3 then %>
+							<a href="<%= root_url %>/history?begin=<%= day_transaction[1][0].created_at.to_date%>" class="item-title-secondary">
+								<p class="text-right fg-hover-orange"><em>View All...</em></p>
+							</a>
+						<% end %>
+					<% else %>
+						<div class="tile double ol-steel bg-gray">
+							<div class="tile-content">
+								<div class="padding20">
+									<p class="text-center fg-white">Sorry No Transactions For This Day</p>
+								</div>
 							</div>
 						</div>
-					</div>
-				<% end %>
-			</div>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
-		<% end %>
+		<hr/>
+	<% end %>
+	</div>	
 </div>

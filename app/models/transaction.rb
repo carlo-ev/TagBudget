@@ -10,23 +10,23 @@ class Transaction < ActiveRecord::Base
 			if word.start_with?'#' then
 				word[0] = ''
 				tags.push word.capitalize
-				description.slice! word
+				#description.slice! word
 			end
 			if (Integer(word) rescue false) then
 				amounts.push Integer(word)
-				description.slice! word
+				#description.slice! word
 			end
 =begin
 			if word.start_with? '%' then
 				word[0] = ''
 				balance.push word.capitalize
-				description.slice! word
+				#description.slice! word
 			end
 =end
 		end
 				
 		new_transaction = Transaction.new
-		new_transaction.amount = amounts[0]
+		new_transaction.amount = amounts[0]? amounts[0] : 0
 		new_transaction.detail = description
 		db_tags = Tag.all
 		db_tags.each do |tg|

@@ -16,7 +16,9 @@
 @font-face {
 	font-family: 'iconFont';
 	src:url('iconFont.woff') format('woff'),
-		url('iconFont.ttf') format('truetype');
+		url('iconFont.ttf') format('truetype'),
+		url('metroSysIcons.ttf') format('truetype'),
+			url('metroSysIcons.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }

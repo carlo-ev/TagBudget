@@ -1,14 +1,28 @@
-<a href="<%= transaction_path(transaction) %>" class="tile <%= 'double-vertical' unless transaction.tags.size < 2%> fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
+<a href="<%= transaction_path(transaction) %>" class="tile double <%= 'double-vertical' if transaction == @sample %> fg-white ol-black bg-dark<%= transaction.amount < 0 ? 'Red' : 'Green' %>">
 	<div class="tile-content">
-		<div class="text-right padding10">
-			<h3 class="no-margin fg-white"><%= transaction.amount.abs %></h3>
-			<% transaction.tags.each do |tag| %>
-				<p class="fg-white">#<%= truncate(tag.name, length: 9) %></p>
-			<% end %>
+		<div class="padding10">
+			<div class="text-left inline-block place-left">
+				<h2 class="fg-white">$<%= transaction.amount.abs %></h2>
+			</div>
+			<div class="text-right inline-block place-right">
+				<% transaction.tags.slice(0..2).to_a.each do |tag| %>
+					<p class="fg-white nbm">#<%= truncate(tag.name, length: 15) %></p>
+				<% end %>
+				<% if transaction.tags.size > 3 then%>
+					<p class="fg-white nbm">...</p>
+				<% end %>
+			</div>
 		</div>
+		<% if transaction == @sample then%>
+			<div class="row">
+				<div class="padding15">
+				<p class="fg-white text-center"><%= transaction.detail %></p>
+				</div>
+				</div>
+		<% end %>
 	</div>
 	<div class="brand">
-		<span class="name"><%= time_ago_in_words transaction.created_at %> Ago</span>
+		<span class="name text-left"><%= time_ago_in_words transaction.created_at %> Ago</span>
 		<span class="badge <%= transaction.amount < 0 ? 'icon-minus-2' : 'icon-plus-2' %>"></span>
 	</div>
 </a>

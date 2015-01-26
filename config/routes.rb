@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'tag/index'
+
+  get 'tag/show'
+
 	root 'transaction#frontpage'
 
 	get 'login', to: 'session#new'
@@ -8,6 +12,7 @@ Rails.application.routes.draw do
 	get 'signup', to: 'user#new'
 	post 'users', to: 'user#create'
 	resources :transaction , except: [ :edit, :update ]
+	resources :tag, only: [:index, :show]
 	post '/', to: 'transaction#index'
 	get '/history', to: 'transaction#history'
 	get '/week', to: 'transaction#week'

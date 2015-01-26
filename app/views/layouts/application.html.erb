@@ -27,13 +27,15 @@
 					<ul>
 						<li>
 							<a href="<%= root_url %>">
-								<h2 class="fg-hover-orange">Tag<tag class="fg-hover-black">Budget</tag></h2>
+								<h1 class="fg-hover-orange ntm nbm">Tag<tag class="fg-hover-black">Budget</tag></h1>
 							</a>
 						</li>
 						<% if @current_user %>
-							<li><a href="<%= transaction_index_url %>" class="fg-hover-orange">Tag</a></li>
-							<li><a href="<%= root_url %>week" class="fg-hover-orange">This Week</a></li>
-							<li><a href="<%= root_url %>history" class="fg-hover-orange">History</a></li>
+							<li><a href="<%= transaction_index_url %>" class="fg-hover-orange">Home</a></li>
+							<li><a href="<%= tag_index_url %>" class="fg-hover-orange">Tags</a></li>
+							<li>
+								<a class="fg-hover-orange" href="#">Transactions</a>
+							</li>
 							<li>
 								<div class="tile-area no-padding">
 								<div class="user-id bg-transparent">
