@@ -1,39 +1,15 @@
 <div class="grid fluid">
 	<div class="row">
-		<h2 class="tile-area-title text-center">
-			History
-		</h2>
+		<div class="span8 offset1">
+			<h2>History</h2>
+		</div>
 	</div>
-	<div class="row">
+	<div class="row ntm">
 		<%= render 'shared/sidebar' %>
-		<div class="tile-group six offset1">
+		<div class="tile-group eight offset1">
 			<%if @transactions then %>
 				<%= render partial: "transaction" , collection: @transactions %>	
-				<div class="pagination">
-					<ul>
-						<li class="first"><a href="<%= root_url %>history?<%= @dates %>&page=0"><i class="icon-first-2"></i></a></li>
-						<% unless @actualPage-1 < 0 %>
-							<li class="prev">
-								<a href="<%= root_url %>history?<%= @dates %>&page=<%= @actualPage-1 %>"><i class="icon-previous"></i></a>
-							</li>
-						<% end %>
-						<% (@actualPage-2..@actualPage+2).each do |num| %>
-							<% unless num <= 0 or num > @maxPage %>
-								<li class="<%= num==@actualPage?'active':'' %>">
-									<a href="<%= root_url %>history?<%= @dates %>&page=<%= num.to_s %>"><%= num %></a>
-								</li>
-							<% end %>
-						<% end %>
-						<% unless @actualPage+1 >= @maxPage %>
-							<li class="next">
-								<a href="<%= root_url %>history?<%= @dates %>&page=<%= @actualPage+1 %>"><i class="icon-next"></i></a>
-							</li>
-						<% end %>
-						<li class="last"><a href="<%= root_url %>history?<%= @dates %>&page=<%= @maxPage-1 %>"><i class="icon-last-2"></i></a></li>
-					</ul>
-				</div>
 			<% end %>
 		</div>
-
 	</div>
 </div>

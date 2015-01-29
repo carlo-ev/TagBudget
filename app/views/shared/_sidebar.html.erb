@@ -1,12 +1,16 @@
-<div class="span1">
-	<nav class="sidebar light">
+<div class="span6 offset4">
+	<nav class="horizontal-menu compact">
 		<ul>
-			<% [{text: 'Recent', classes:'active', icon:'icon-home', url:root_url},
-			{text: 'This Week', classes:'', icon:'icon-history', url:root_url+'week'},
-			{text: 'History', classes:'', icon:'icon-calendar', url:root_url+'history'}].each do |option| %>
-				<li class="<%= option[:classes] %> subheader text-center"><a href="<%= option[:url] %>">
-					<i class="<%= option[:icon] %>"></i></a>
-				</li>
+			<% [{text: 'Recent',  icon:'icon-home', url:root_url},
+	{text: 'This Week', icon:'icon-history', url:root_url+'week'},
+	{text: 'History', icon:'icon-calendar', url:root_url+'history'}].each do |option| %>
+			<li class="subheader text-center">
+				<a href="<%= option[:url] %>" class="bg-hover-lightBlue">
+					<h3 class="ntm nbm fg-hover-white fg-lightBlue">
+					<i class="<%= option[:icon] %>"></i><%= option[:text] %>
+					</h3>
+				</a>
+			</li>
 			<% end %>
 		</ul>
 	</nav>

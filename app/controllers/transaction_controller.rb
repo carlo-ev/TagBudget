@@ -30,11 +30,11 @@ class TransactionController < ApplicationController
   end
 
   def history
-		history = @current_user.get_history(params[:begin], params[:end]).each_slice(16).to_a
-		@actualPage = params[:page]? params[:page].to_i-1 : 0;
-		@maxPage = history.size
-		@dates = 'begin='+params[:begin].to_s+'&end='+params[:end].to_s
-		@transactions = history[@actualPage]
+		#history = @current_user.get_history(params[:begin], params[:end]).each_slice(16).to_a
+		#@actualPage = params[:page]? params[:page].to_i-1 : 0;
+		#@maxPage = history.size
+		#@dates = 'begin='+params[:begin].to_s+'&end='+params[:end].to_s
+		@transactions = @current_user.transactions#history[@actualPage]
 		@sample = @transactions.to_a.sample
   end
 

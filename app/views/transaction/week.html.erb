@@ -1,14 +1,12 @@
 <div class="grid-fluid">
 	<div class="row">
-		<div class="span10 offset2">
+		<div class="span8 offset1">
 			<br>
-			<a href="<%= root_url %>"><i class="icon-arrow-left-3 fg-darker place-left subheader"></i></a>
-			<p class="subheader text-center">	
-				Week Transactions
-			</p>
+			<h2>	Week Transactions</h2>
 		</div>
 	</div>
 	<div class="offset1">
+	<%= render 'shared/sidebar' %>
 	<% @days.each_slice(2) do |dayrows| %>
 		<div class="row">
 			<% dayrows.each do |day_transaction| %>
