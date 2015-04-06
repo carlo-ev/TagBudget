@@ -1,4 +1,4 @@
-<div class="span6 offset4">
+<div class="span4">
 	<nav class="horizontal-menu compact">
 		<ul>
 			<% [{text: 'Recent',  icon:'icon-home', url:root_url},
@@ -6,7 +6,7 @@
 	{text: 'History', icon:'icon-calendar', url:root_url+'history'}].each do |option| %>
 			<li class="subheader text-center">
 				<a href="<%= option[:url] %>" class="bg-hover-lightBlue">
-					<h3 class="ntm nbm fg-hover-white fg-lightBlue">
+					<h3 class="ntm nbm fg-hover-white fg-lightBlue padding5">
 					<i class="<%= option[:icon] %>"></i><%= option[:text] %>
 					</h3>
 				</a>

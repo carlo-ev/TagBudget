@@ -1,6 +1,6 @@
 <div class="grid fluid">
 	<div class="row">
-		<div class="span9 offset2">
+		<div class="span5 offset1">
 			<%= form_for @transaction, url: {action: 'create'} do |f| %>
 			<label class="inline-block subheader-secondary">New Transaction</label>
 			<div class="input-control text size6 margin10">
@@ -9,15 +9,15 @@
 			<%= f.submit "Tag!", class: 'primary size1 overPadding8' %>	
 			<% end %>
 		</div>
+		<%= render 'shared/sidebar' %>
 	</div>
 	<div class="row">
-			<%= render 'shared/sidebar' %>
 			<div class="tile-group eight place-right ntp half-offset">
 				<h2 class="tile-area-title padding9">
-					<span class="budget text-left">
+					<span class="text-left">
 						Main
 					</span>
-					<span class="balance place-right">Current Balance:
+					<span class="offset1">Current Balance:
 						<span class="fg-dark<%= @current_user.balance > 0 ? 'Green' : 'Red'%>">$ <%= @current_user.balance %></span>
 					</span>
 				</h2>

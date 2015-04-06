@@ -1,37 +1,28 @@
-<div class="grid-fluid">
+<div class="grid fluid">
 	<div class="row">
-		<div class="span8 offset1">
-			<br>
+		<div class="span5 offset1">
 			<h2>	Week Transactions</h2>
 		</div>
+		<%= render 'shared/sidebar' %>
 	</div>
-	<div class="offset1">
-	<%= render 'shared/sidebar' %>
-	<% @days.each_slice(2) do |dayrows| %>
-		<div class="row">
-			<% dayrows.each do |day_transaction| %>
-				<div class="tile-group four ntp text-center">
-					<h3 class="tile-area-title text-left subheader"><%= day_transaction[0] %></h3>
-					<% if day_transaction[1].size > 0 then %>
-						<%= render partial: "transaction" , collection: day_transaction[1].slice(0..2) %>	
-						<% if day_transaction[1].size > 3 then %>
-							<a href="<%= root_url %>/history?begin=<%= day_transaction[1][0].created_at.to_date%>" class="item-title-secondary">
-								<p class="text-right fg-hover-orange"><em>View All...</em></p>
-							</a>
-						<% end %>
-					<% else %>
-						<div class="tile double ol-steel bg-gray">
-							<div class="tile-content">
-								<div class="padding20">
-									<p class="text-center fg-white">Sorry No Transactions For This Day</p>
-								</div>
-							</div>
+	<div class="row">
+		<div class="span9 offset1">
+			<div class="tab-control" data-role="tab-control">
+				<% @days[0].each_with_index do |day, index| %>
+					<ul class="tabs">
+						<li><a href="#_page_<%= index + 1 %>"><%= day%></a></li>
+					</ul>
+				<% end %>
+			</div>
+			<div class="frames">
+				<% @days[1].each_with_index do |trans, index| %>
+					<div class="frame" id="_page_<%= index+1 %>">
+						<div class="tile-group eight">
+							<% render partial: "transaction", collection: trans %>
 						</div>
-					<% end %>
-				</div>
-			<% end %>
+					</div>
+				<% end %>
+			</div>
 		</div>
-		<hr/>
-	<% end %>
 	</div>	
 </div>

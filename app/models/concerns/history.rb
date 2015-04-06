@@ -13,18 +13,20 @@ module History
 	end
 		
 	def get_week
-		week = Hash[(Date.today.at_beginning_of_week...Date.today.at_beginning_of_week+7).collect { |day| [day.dayname, Array.new] }]
-		weekTransactions = self.transactions.where( created_at: Date.today.at_beginning_of_week.beginning_of_day..(Date.today.at_beginning_of_week+7).end_of_day ).order('created_at DESC')
-		weekTransactions.each do |transaction|
-			week[transaction.created_at.to_date.dayname].push(transaction)
+		week = (Date.today.at_beginning_of_week...Date.today.at_beginning_of_week+7).collect { |day| day.dayname }
+		#Hash[(Date.today.at_beginning_of_week...Date.today.at_beginning_of_week+7).collect { |day| [day.dayname, Array.new] }]
+		trans = self.transactions.where( created_at: Date.today.at_beginning_of_week.beginning_of_day..(Date.today.at_beginning_of_week+7).end_of_day ).order('created_at DESC')
+		trans_array = []
+		trans.each do |transaction|
+			index  = week.index(transaction.created_at.to_date.dayname)
+			unless trans_array[index] then
+				trans_array[index] = []
+			end
+			#week[transaction.created_at.to_date.dayname].push(transaction)
+				trans_array[index].push transaction
 		end
-		week
+			puts trans_array.size
+		[week, trans_array]
 	end
-		
-	module ClassMethods
-		def test
-			p 'test'
-		end
-	end 
 	
 end
