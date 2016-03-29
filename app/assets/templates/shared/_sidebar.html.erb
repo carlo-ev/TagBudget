@@ -1,0 +1,17 @@
+<div class="span4">
+	<nav class="horizontal-menu compact">
+		<ul>
+			<% [{text: 'Recent',  icon:'icon-home', url:root_url},
+	{text: 'This Week', icon:'icon-history', url:root_url+'week'},
+	{text: 'History', icon:'icon-calendar', url:root_url+'history'}].each do |option| %>
+			<li class="subheader text-center">
+				<a href="<%= option[:url] %>" class="bg-hover-lightBlue">
+					<h3 class="ntm nbm fg-hover-white fg-lightBlue padding5">
+					<i class="<%= option[:icon] %>"></i><%= option[:text] %>
+					</h3>
+				</a>
+			</li>
+			<% end %>
+		</ul>
+	</nav>
+</div>

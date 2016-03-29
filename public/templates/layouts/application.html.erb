@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TagBudget: #Alpha</title>
+	
+	<!-- FAVICON -->
+	<%= favicon_link_tag 'favicon.ico'%>
+
+	<!-- JQUERY -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+	<!-- METRO UI -->
+	<%= stylesheet_link_tag    'application', 'metro-bootstrap-responsive.min.css', 'data-tubolinks-track' => true %>
+	<%= stylesheet_link_tag    'application', 'metro-bootstrap.min.css', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag    'application', 'iconFont.min.css', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'metro.min.js' %>
+	
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="metro">
+	<div class="grid fluid nbm">
+		<div class="row">
+			<div class="span10 offset1">
+				<nav class="horizontal-menu">
+					<ul>
+						<li>
+							<a href="<%= root_url %>">
+								<h1 class="fg-hover-orange ntm nbm">Tag<tag class="fg-hover-black">Budget</tag></h1>
+							</a>
+						</li>
+						<% if @current_user %>
+							<li><a href="<%= transaction_index_url %>" class="fg-hover-orange">Home</a></li>
+							<li><a href="<%= tag_index_url %>" class="fg-hover-orange">Tags</a></li>
+							<li>
+								<a class="fg-hover-orange" href="#">Transactions</a>
+							</li>
+							<li>
+								<div class="tile-area no-padding">
+								<div class="user-id bg-transparent">
+									<div class="user-id-image">
+										<span class="icon-user no-display1"></span>
+									</div>
+									<div class="user-id-name fg-black">
+										<span class="first-name"><%= @current_user.email.split('@')[0] %></span>
+											<a href="<%= root_url %>logout" class="fg-black fg-hover-orange no-padding">
+												<span class="last-name">Logout</span>
+											</a>
+									</div>
+								</div>
+									</div>
+							</li>
+						<% else %>
+							<li class="place-right" style="padding:10px;"><a href='<%= root_url %>signup' class="fg-hover-orange">SignUp</a></li>
+							<li class="place-right" style="padding:10px;"><a href='<%= root_url %>login' class="fg-hover-orange">Login</a></li>
+						<% end %>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<hr class="no-margin"/>
+	<%= yield %>
+
+</body>
+</html>

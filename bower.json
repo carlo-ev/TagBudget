@@ -1,0 +1,13 @@
+{
+  "name": "TagBudget",
+  "version": "0.2.0",
+  "main": "public/app.js",
+  "dependencies": {
+    "jquery": "*",
+    "ember": "~2.3",
+    "metro-ui-css": "~3.0",
+    "d3": "*",
+    "c3": "~0.4.10"
+  },
+  "overrides": { }
+}

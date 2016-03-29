@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="favicon/favicon.ico">
+	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/app.css" />
+	<title>TagBudget: Finance made Simple</title>
+</head>
+<body>
+	<script id="application" type="text/x-handlebars">
+		<div class="app-bar">
+			<a class="app-bar-element">
+				<span class="mif-apps mif-x2"></span>
+			</a>
+			<a href="/" class="app-bar-element">
+				<span class="orange">Tag</span>Budget
+			</a>
+			<span class="app-bar-divider"></span>
+		</div>
+		<div class="row">
+			{{outlet}}
+		</div>	
+	</script>
+	
+	<div id="loader" data-role="preloader" data-type="cycle" data-style="dark" style="margin: auto" class="preloader-cycle dark-style"><div class="cycle"></div>
+	</div>
+	
+	<div id="appContainer" class="flex-grid" role="main"></div>
+
+	<script type="text/javascript">
+		(function(){
+			console.log('init text?');
+			require('init')();
+		})(this);
+	</script>
+</body>
+</html>

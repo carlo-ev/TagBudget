@@ -1,0 +1,25 @@
+<br>
+<br>
+<br>
+<div class="row">
+	<div class="span6 offset5">
+		<div class="panel">
+			<div class="panel-header">
+				<h2>Login</h2>
+			</div>
+			<div class="panel-content">
+				<%= form_tag('/login', method: 'post') do %>
+					<%= label_tag(:email, 'Email:') %>
+					<div class="input-control text">	
+						<%= text_field_tag(:email) %>
+					</div>
+					<%= label_tag(:password, 'Password:') %>
+					<div class="input-control password">	
+						<%= password_field_tag(:password) %>
+					</div>
+					<%= submit_tag 'LogIn', class: 'warning'%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
